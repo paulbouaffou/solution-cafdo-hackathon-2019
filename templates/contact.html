@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <br><br>
+        <h3 class="page-header">NOUS CONTACTER</h3>
+        <ol class="breadcrumb">
+            <li><a href="{{url_for('home')}}">Accueil</a></li>
+            <li>Nous contacter</li>
+          </ol>
+        <h3>Pour toutes réclamations ou suggestions,</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+      <div class="recent">
+          <br><br>
+        <h3>Nous envoyer un mail</h3>
+        <br><br>
+      </div>
+      <form action="" method="post" role="form" class="contactForm">
+        <div class="form-group">
+          <input type="text" name="name" class="form-control" id="name" placeholder="Nom et Prénom" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+          <div class="validation"></div>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" data-rule="email" data-msg="Please enter a valid email" />
+          <div class="validation"></div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+          <div class="validation"></div>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+          <div class="validation"></div>
+        </div>
+
+        <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Envoyer</button></div>
+      </form>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="recent">
+          <br><br>
+        <h3>Nous contacter via appel ou SMS</h3>        
+        <br><br>
+      </div>
+      <div class="">
+        <h4 class="text-left">
+            <strong>(Orange) +22568012524</strong><br><br>
+            <strong>(MTN) +22575716984</strong><br><br>
+            <strong>(Moov) +22553909013</strong> 
+            </h4>
+      </div>
+    </div>
+  </div>
+  <!-- page end-->
+
+{% endblock%}

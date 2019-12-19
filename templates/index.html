@@ -1,0 +1,93 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<!--overview start-->
+<div class="row">
+  <div class="col-lg-12">
+    <br><br>
+    <h4>Bienvenue sur <strong>Educ'Aid Côte d'Ivoire</strong>,<br>Plateforme de collecte de besoins en établissements scolaires et de présentation de données de l'aide à l'éducation</h4>
+    <br><br>
+    <div class="barre">
+        <a href="{{url_for('home')}}">Accueil </a>
+        <a href="{{url_for('about')}}">À propos </a>
+        <a href="{{url_for('givedata')}}"> Soumettre un besoin</a>
+        <a href="{{url_for('needexprim')}}"> Besoins exprimés </a>
+        <a href="{{url_for('aidata')}}" title="Données de l'IITA sur l'éducation">Aide à l'éducation </a>
+        <a href="{{url_for('contact')}}">Nous contacter</a>
+    </div>
+    <br><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-4 col-md-4">
+    <div class="vert">
+      <strong><h2>189</h2></strong>
+    <strong><h4>Projets sur l'aide à l'éducation</h4></strong>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="rouge">
+      <strong><h2>0</h2></strong>
+    <strong><h4>Besoins exprimés</h4></strong>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <div class="jaune">
+      <strong><h2>0</h2></strong>
+    <strong><h4>Besoins exprimés et pris en compte</h4></strong>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-9 col-md-9">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>Carte</p>
+      </div>
+      <div class="panel-body-map">
+        <div id="mapid"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>Légende</p>
+      </div>
+      <div class="panel-body-map">
+        <div class="text-center">
+        <div class="circle1"></div>
+        <div class="">
+          <p>Aide à l'éducation</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="circle2"></div>
+        <div class="">
+          <p>Besoins exprimés</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="circle3"></div>
+        <div class="">
+          <p>Besoins exprimés et pris en compte</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="circle4"></div>
+        <div class="">
+          <p>Régions de la Côte d'Ivoire</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

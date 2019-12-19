@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portail des données ouvertes sur l'éducation ivoirienne">
+  <meta name="author" content="Paul Bouaffou">
+  <meta name="keyword" content="Portail des données ouvertes sur l'éducation ivoirienne">
+  <link rel="shortcut icon" href="{{url_for('static', filename='img/educaid-icon.png')}}">
+
+  <title>{{title}}</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="{{url_for('static', filename='css/bootstrap-theme.css')}}" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="{{url_for('static', filename='css/elegant-icons-style.css')}}" rel="stylesheet" />
+  <link href="{{url_for('static', filename='css/font-awesome.min.css')}}" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/style-responsive.css')}}" rel="stylesheet" />
+
+  <!-- css leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+  <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <script src="js/lte-ie7.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+
+
+    <header class="header dark-bg">
+      <!--logo start-->
+      <a href="{{url_for('home')}}" class="logo"><img src="{{url_for('static', filename='img/educaid-logo.png')}}" alt="odedu.ci-logo" width="100px" height="60px"></a>
+      <!--logo end-->
+    </header>
+    <!--header end-->
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <div class="container">
+            <!--overview start-->
+<div class="row">
+    <div class="col-lg-12">
+        <br><br>
+        <h3 class="page-header">BESOINS EXPRIMÉS</h3>
+        <ol class="breadcrumb">
+            <li><a href="{{url_for('home')}}">Accueil</a></li>
+            <li>Besoins exprimés</li>
+          </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+  
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <p>Carte</p>
+        </div>
+        <div class="panel-body-map">
+          <div id="mapid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+        </div>
+      </section>
+    </section>
+    <br><br>
+      <div class="text-center">
+        <div class="credits">
+          <div class="container">
+              <p><span class="text-muted">Licence MIT. Tous droits réservés &copy; 2019 | <a href="https://github.com/paulbouaffou/" target="_blank">Code source (GitHub)</a></span></p>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!-- container section end -->
+  <!-- javascripts -->
+  <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+  <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+  <!-- nice scroll -->
+  <script src="{{url_for('static', filename='js/jquery.scrollTo.min.js')}}"></script>
+  <script src="{{url_for('static', filename='js/jquery.nicescroll.js')}}" type="text/javascript"></script>
+  <!-- jquery knob -->
+  <script src="{{url_for('static', filename='assets/jquery-knob/js/jquery.knob.js')}}"></script>
+  <!--custome script for all page-->
+  <script src="{{url_for('static', filename='js/scripts.js')}}"></script>
+  <script>
+      //knob
+      $(function() {
+        $(".knob").knob({
+          'draw': function() {
+            $(this.i).val(this.cv + '%')
+          }
+        })
+      });
+
+      //carousel
+      $(document).ready(function() {
+        $("#owl-slider").owlCarousel({
+          navigation: true,
+          slideSpeed: 300,
+          paginationSpeed: 400,
+          singleItem: true
+
+        });
+      });
+
+      //custom select box
+
+      $(function() {
+        $('select.styled').customSelect();
+      });
+    </script>
+    <!-- javascript leaflet -->
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+ integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+ crossorigin=""></script>
+
+ <!-- javascript leaflet -->
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+ integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+ crossorigin=""></script>
+ <script>
+     var mymap = L.map('mapid').setView([7.9897371, -5.5679458], 7);
+
+     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicGF1bGJvdWFmZm91IiwiYSI6ImNrM2ttazBqMzBzMmszZnJra2IwZmRnMnkifQ.RjKtLa6q7GZlP5fTWl9Jdg', {
+    attribution: '<a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+    maxZoom: 20,
+    id: 'mapbox/streets-v11',
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+
+    var marker = L.marker([5.4091179, -4.0422099]).addTo(mymap);
+    marker.bindPopup("<p>Abidjan</p>").openPopup();
+
+    var marker1 = L.marker([6.6494254, -4.7040555]).addTo(mymap);
+    marker1.bindPopup("<p>N'Zi</p>").openPopup();
+
+    var marker2 = L.marker([7.0579401, -3.9660686]).addTo(mymap);
+    marker2.bindPopup("<p>Iffou</p>").openPopup();
+
+    var marker3 = L.marker([6.5602173, -5.0160877]).addTo(mymap);
+    marker3.bindPopup("<p>Bélier</p>").openPopup();
+
+    var marker4 = L.marker([6.6475288, -4.2046603]).addTo(mymap);
+    marker4.bindPopup("<p>Moronou</p>").openPopup();
+
+    var marker5 = L.marker([6.667663, -3.5107449]).addTo(mymap);
+    marker5.bindPopup("<p>Indénié-Djuablin</p>").openPopup();
+
+    var marker6 = L.marker([5.712626, -3.2076104]).addTo(mymap);
+    marker6.bindPopup("<p>Sud-comoé</p>").openPopup();
+
+    var marker7 = L.marker([9.9964793, -7.836692]).addTo(mymap);
+    marker7.bindPopup("<p>Folon</p>").openPopup();
+
+    var marker8 = L.marker([9.504431, -7.561942]).addTo(mymap);
+    marker8.bindPopup("<p>Kabadougou</p>").openPopup();
+
+    var marker9 = L.marker([6.1329749, -5.9517697]).addTo(mymap);
+    marker9.bindPopup("<p>Gôh</p>").openPopup();
+
+    var marker10 = L.marker([5.8294045, -5.3592251]).addTo(mymap);
+    marker10.bindPopup("<p>Lôh-Djiboua</p>").openPopup();
+
+    var marker11 = L.marker([5.931283, -4.2106525]).addTo(mymap);
+    marker11.bindPopup("<p>Agnéby-Tiassa</p>").openPopup();
+
+    var marker12 = L.marker([6.106654, -3.861331]).addTo(mymap);
+    marker12.bindPopup("<p>Mé</p>").openPopup();
+
+    var marker13 = L.marker([5.322596, -4.3742639]).addTo(mymap);
+    marker13.bindPopup("<p>Grands-Ponts</p>").openPopup();
+
+    var marker14 = L.marker([7.409, -7.5502]).addTo(mymap);
+    marker14.bindPopup("<p>Tonkpi</p>").openPopup();
+
+    var marker16 = L.marker([6.5469342, -7.4965252]).addTo(mymap);
+    marker16.bindPopup("<p>Cavally</p>").openPopup();
+
+    var marker17 = L.marker([6.7417668, -7.3480136]).addTo(mymap);
+    marker17.bindPopup("<p>Guémon</p>").openPopup();
+
+    var marker18 = L.marker([6.8766904, -6.4516096]).addTo(mymap);
+    marker18.bindPopup("<p>Haut-Sassandra</p>").openPopup();
+
+    var marker19 = L.marker([6.9926, -5.7445]).addTo(mymap);
+    marker19.bindPopup("<p>Marahoué</p>").openPopup();
+
+    var marker20 = L.marker([9.4574719, -5.6342471]).addTo(mymap);
+    marker20.bindPopup("<p>Poro</p>").openPopup();
+
+    var marker21 = L.marker([9.5939778, -5.1975952]).addTo(mymap);
+    marker21.bindPopup("<p>Tchologo</p>").openPopup();
+
+    var marker22 = L.marker([9.525038, -6.480965]).addTo(mymap);
+    marker22.bindPopup("<p>Bagoué</p>").openPopup();
+
+    var marker23 = L.marker([5.7852673, -6.5928329]).addTo(mymap);
+    marker23.bindPopup("<p>Nawa</p>").openPopup();
+
+    var marker24 = L.marker([5.014152, -6.9402237]).addTo(mymap);
+    marker24.bindPopup("<p>San-pédro</p>").openPopup();
+
+    var marker25 = L.marker([4.9519348, -6.0885618]).addTo(mymap);
+    marker25.bindPopup("<p>Gbôklé</p>").openPopup();
+
+    var marker26 = L.marker([8.140406, -5.102172]).addTo(mymap);
+    marker26.bindPopup("<p>Hambol</p>").openPopup();
+
+    var marker27 = L.marker([7.6906058, -5.0298408]).addTo(mymap);
+    marker27.bindPopup("<p>Gbêkê</p>").openPopup();
+
+    var marker28 = L.marker([8.0577294, -6.1897808]).addTo(mymap);
+    marker28.bindPopup("<p>Béré</p>").openPopup();
+
+    var marker29 = L.marker([14.864559, -15.876047]).addTo(mymap);
+    marker29.bindPopup("<p>Bafing</p>").openPopup();
+
+    var marker30 = L.marker([7.9662547, -6.675572]).addTo(mymap);
+    marker30.bindPopup("<p>Worodougou</p>").openPopup();
+
+    var marker31 = L.marker([9.2729913, -2.996958]).addTo(mymap);
+    marker31.bindPopup("<p>Bounkani</p>").openPopup();
+
+    var marker32 = L.marker([8.0397992, -2.7984258]).addTo(mymap);
+    marker32.bindPopup("<p>Gontougo</p>").openPopup();
+
+
+</script>
+</body>
+</html>
